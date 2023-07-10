@@ -49,7 +49,8 @@ class User:
         if len(result) < 1:
             return False
         return cls(result[0])
-    
+
+#a method for validating login and user information    
     @staticmethod
     def validate_user(user):
         is_valid = True

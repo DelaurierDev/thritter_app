@@ -7,11 +7,12 @@ EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app)
 
+#Render the index page with login and register
 @app.route('/')
 def login_reg():
     return render_template('index.html')
 
-
+#the route used to manipulate the data and call to insert it into the database
 @app.route('/register', methods=['POST'])
 def create_user():
     usernamedata = {'username': request.form['username']}
@@ -42,6 +43,7 @@ def create_user():
     session['username'] = data['username']
     return redirect('/dashboard')
 
+#the route used to log in
 @app.route('/login', methods=['POST'])
 def login():
 
@@ -62,6 +64,7 @@ def login():
 
     return redirect('/dashboard')
 
+#The route used to render the dashboard page
 @app.route('/dashboard')
 def logged_in():
     if 'user_id' not in session:
