@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Thritter</title>
+</head>
+<body>
+    <h1>Thritter</h1>
+    <div class="container">
+    <div class="form">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p class="error">{{message}}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <h2>Register</h2>
+        <form action="/register" method='POST'>
+            <p>First Name:</p>
+            <input type="text" name="fname">
+            <p>Last Name:</p>
+            <input type="text" name="lname">
+            <p>Username:</p>
+            <input type = "text" name="username">
+            <p>Email:</p>
+            <input type="email" name="email">
+            <p>Password:</p>
+            <input type="password" name="password">
+            <p>Confirm Password:</p>
+            <input type="password" name="confpassword">
+            <button class="log_reg">Register</button>
+        </form>
+    </div>
+    <div class>
+        <h2>Log in</h2>
+        <form action="/login" method="POST">
+            <p>Email: </p>
+            <input type="email" name="email">
+            <p>Password: </p>
+            <input type="password" name="password">
+            <button>Log In</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
