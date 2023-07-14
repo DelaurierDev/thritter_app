@@ -10,6 +10,38 @@
 <body>
     <div>
         <h1>Welcome, {{username}}</h1>
+        <div>
+            <form action="">
+                <button>My Account</button>
+            </form>
+            <form action="/logout">
+                <button>Logout</button>
+            </form>
+        </div>
+    </div>
+    <div>
+        <div>
+            <h2>Posts</h2>
+        </div>
+        <div>
+            <h2>Make a Post!</h2>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p class="error">{{message}}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+            <form action="/posts/save" method="POST">
+                    <p>Title:</p>
+                    <input type="text" name="post_title">
+                    <p>Content:</p>
+                    <textarea name="post_content" rows="5" cols="51">
+                    </textarea>
+                    <button>POST</button>
+            </form>            
+        </div>
+
     </div>
 </body>
 </html>

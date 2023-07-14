@@ -75,3 +75,9 @@ def logged_in():
                             username = session['username'],
                             user_id = session['user_id']
                            )
+
+#a route for logging out
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect('/')
