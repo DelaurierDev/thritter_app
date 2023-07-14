@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Thritter</title>
+</head>
+<body>
+    <div>
+        <h1>My Page</h1>
+        <div>
+            <form action="/dashboard">
+                <button>Home</button>
+            </form>
+            <form action="/logout">
+                <button>Logout</button>
+            </form>
+        </div>
+    </div>
+    <div>
+        <div>
+            {%for post in posts%}
+            <div>
+                <h3>{{post.post_title}}</h3>
+                <p>{{post.post_contents}}</p>
+                <div>
+                    <a href="">edit</a>
+                    <a href="">delete</a>
+                </div>                
+            </div>
+
+            {%endfor%}
+        </div>
+    </div>
+</body>
+</html>

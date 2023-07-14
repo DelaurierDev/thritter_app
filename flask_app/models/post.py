@@ -32,4 +32,24 @@ class Post:
             is_valid = False
         return is_valid
 
+    @staticmethod
+    def getallposts():
+        query = '''
+        SELECT *
+        FROM posts
+        LEFT JOIN users on users.id = posts.user_id'''
+        results = connectToMySQL(mydb).query_db(query)
+        results2 = results[::-1]
+        return results2
+    
+    @classmethod
+    def getpostsbyuserid(cls, id):
+        posts = []
+        query = '''
+        SELECT * FROM posts
+        WHERE user_id = %(id)s'''
+        results = connectToMySQL(mydb).query_db(query,id)
+        for row in results:
+            posts.append(row)
+        return posts
 

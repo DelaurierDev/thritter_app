@@ -2,6 +2,7 @@ from flask_app import app
 from flask import render_template, redirect,request,session,flash
 import re
 from flask_app.models.user import User
+from flask_app.models.post import Post
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$') 
 
 from flask_bcrypt import Bcrypt
@@ -73,7 +74,8 @@ def logged_in():
     
     return render_template('dashboard.html',
                             username = session['username'],
-                            user_id = session['user_id']
+                            user_id = session['user_id'],
+                            posts = Post.getallposts()
                            )
 
 #a route for logging out
@@ -81,3 +83,12 @@ def logged_in():
 def logout():
     session.clear()
     return redirect('/')
+
+#a route for rendering the my account tab
+@app.route('/mypage')
+def myaccount():
+    if 'user_id' not in session:
+        flash('Must login')
+        return redirect('/')
+    
+    return render_template('myaccount.html', posts = Post.getpostsbyuserid({'id' :session['user_id']}))

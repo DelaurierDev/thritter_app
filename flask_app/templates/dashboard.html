@@ -11,8 +11,8 @@
     <div>
         <h1>Welcome, {{username}}</h1>
         <div>
-            <form action="">
-                <button>My Account</button>
+            <form action="/mypage">
+                <button>My Page</button>
             </form>
             <form action="/logout">
                 <button>Logout</button>
@@ -22,6 +22,16 @@
     <div>
         <div>
             <h2>Posts</h2>
+            {%for post in posts%}
+            <div>
+                <div>
+                <h3>{{post.post_title}}</h3>
+                <h5>Posted by: {{post.username}}</h5>    
+                </div>
+                {{post.post_contents}}
+
+            </div>
+            {%endfor%}
         </div>
         <div>
             <h2>Make a Post!</h2>
