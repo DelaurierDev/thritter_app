@@ -16,3 +16,32 @@ def save_post():
     }
     Post.savepost(data)
     return redirect('/dashboard')
+
+@app.route('/posts/edit/<id>')
+def edit_post(id):
+    if 'user_id' not in session:
+        flash('Must Login')
+        return redirect('/')
+    return render_template('edit.html', post = Post.getPostByPostID({'id': id}))
+
+@app.route('/posts/update', methods = ['POST'])
+def update_post():
+    redirecturl = f'/posts/edit/{request.form["id"]}'
+    if not Post.validatepost(request.form):
+        return redirect(redirecturl)
+    
+    data = {
+        'id': request.form['id'],
+        'post_contents' : request.form['post_content'],
+        'post_title' : request.form['post_title']
+    }
+    Post.edit(data)
+    return redirect('/mypage')
+
+@app.route('/posts/delete/<id>')
+def delete_post(id):
+    if 'user_id' not in session:
+        flash('Must Login')
+        return redirect('/')
+    Post.delete({'id' : id})
+    return redirect('/mypage')

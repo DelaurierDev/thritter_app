@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Post</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div>
+        <h1>Edit Post</h1>
+        <div>
+            <form action="/mypage">
+                <button>Back</button>
+            </form>
+            <form action="/logout">
+                <button>Logout</button>
+            </form>            
+        </div>
+        <div>
+            <h2>Make a Post!</h2>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p class="error">{{message}}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+            <form action="/posts/update" method="POST">
+                    <input type="hidden" name='id' value = "{{post.id}}">
+                    <p>Title:</p>
+                    <input type="text" name="post_title" value = '{{post.post_title}}'>
+                    <p>Content:</p>
+                    <textarea name="post_content" rows="5" cols="51" class="textarea">{{post.post_contents}}</textarea>
+                    <button>Edit</button>
+            </form>            
+        </div>
+
+    </div>
+</body>
+</html>

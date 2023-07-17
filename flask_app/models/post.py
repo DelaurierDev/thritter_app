@@ -51,5 +51,36 @@ class Post:
         results = connectToMySQL(mydb).query_db(query,id)
         for row in results:
             posts.append(row)
-        return posts
+        posts2 = posts[::-1]
+        return posts2
+    
+    @classmethod
+    def getPostByPostID(cls, id):
+        query= '''
+        SELECT *
+        FROM posts
+        WHERE id = %(id)s;
+        
+        '''
+        results = connectToMySQL(mydb).query_db(query,id)
+        return results[0]
+    
+    @classmethod
+    def edit(cls, id):
+        query = '''
+        UPDATE posts
+        SET post_title = %(post_title)s,
+        post_contents = %(post_contents)s,
+        updated_at = NOW()
+        WHERE id = %(id)s;
+        '''
+        return connectToMySQL(mydb).query_db(query, id)
+    
+    @classmethod
+    def delete(cls, id):
+        query = '''
+        DELETE FROM posts
+        WHERE id = %(id)s;
+        '''
+        return connectToMySQL(mydb).query_db(query,id)
 
