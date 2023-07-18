@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <div>
+    <div class="nav">
         <h1>Welcome, {{username}}</h1>
-        <div>
+        <div class = 'navright'>
             <form action="/mypage">
                 <button>My Page</button>
             </form>
@@ -19,12 +19,12 @@
             </form>
         </div>
     </div>
-    <div>
+    <div class="posting">
         <div>
             <h2>Posts</h2>
             {%for post in posts%}
-            <div>
-                <div>
+            <div class ="post">
+                <div class = "posttop">
                 <h3>{{post.post_title}}</h3>
                 <h5>Posted by: {{post.username}}</h5>    
                 </div>
@@ -33,7 +33,7 @@
             </div>
             {%endfor%}
         </div>
-        <div>
+        <div class="postright">
             <h2>Make a Post!</h2>
             {% with messages = get_flashed_messages() %}
             {% if messages %}

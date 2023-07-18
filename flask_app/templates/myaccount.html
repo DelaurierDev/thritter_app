@@ -8,9 +8,9 @@
     <title>Thritter</title>
 </head>
 <body>
-    <div>
+    <div class = 'nav'>
         <h1>My Page</h1>
-        <div>
+        <div class = 'navright'>
             <form action="/dashboard">
                 <button>Home</button>
             </form>
@@ -22,12 +22,12 @@
     <div>
         <div>
             {%for post in posts%}
-            <div>
+            <div class="post">
                 <h3>{{post.post_title}}</h3>
                 <p>{{post.post_contents}}</p>
-                <div>
-                    <a href="/posts/edit/{{post.id}}">edit</a>
-                    <a href="/posts/delete/{{post.id}}">delete</a>
+                <div class="links">
+                    <a href="/posts/edit/{{post.id}}" class = "link">edit</a>
+                    <a href="/posts/delete/{{post.id}}" class="link">delete</a>
                 </div>                
             </div>
 

@@ -9,17 +9,20 @@
 </head>
 <body>
     <div>
+        <div class="nav">
         <h1>Edit Post</h1>
-        <div>
+        <div class = 'navright'>
             <form action="/mypage">
                 <button>Back</button>
             </form>
             <form action="/logout">
                 <button>Logout</button>
             </form>            
+        </div>            
         </div>
+
         <div>
-            <h2>Make a Post!</h2>
+            <h2>Edit your post:</h2>
             {% with messages = get_flashed_messages() %}
             {% if messages %}
                 {% for message in messages %}
@@ -33,7 +36,7 @@
                     <input type="text" name="post_title" value = '{{post.post_title}}'>
                     <p>Content:</p>
                     <textarea name="post_content" rows="5" cols="51" class="textarea">{{post.post_contents}}</textarea>
-                    <button>Edit</button>
+                    <button>EDIT</button>
             </form>            
         </div>
 
