@@ -85,4 +85,37 @@ a{
     margin-right: 10px;
 }
 
+.postbtn{
+    margin-left: 320px;
+    margin-top: 10px;
+}
+
+.posts{
+    height: 675px;
+    overflow-y: scroll;
+}
+
+.makeapost{
+    padding-bottom: 15px;
+    border-bottom: 2px solid #39444D;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 12px;
+    }
+    
+/* Track */
+::-webkit-scrollbar-track {
+    background: #888;
+    border-radius: 25px;
+    }
+    
+/* Handle */
+::-webkit-scrollbar-thumb {
+    border: 1px solid black;
+    background: #39444D;
+    border-radius: 25px;
+
+    }
 

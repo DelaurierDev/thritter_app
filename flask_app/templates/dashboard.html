@@ -22,6 +22,7 @@
     <div class="posting">
         <div>
             <h2>Posts</h2>
+            <div class="posts">
             {%for post in posts%}
             <div class ="post">
                 <div class = "posttop">
@@ -31,9 +32,12 @@
                 {{post.post_contents}}
 
             </div>
-            {%endfor%}
+            {%endfor%}                
+            </div>
+
         </div>
         <div class="postright">
+            <div class="makeapost">
             <h2>Make a Post!</h2>
             {% with messages = get_flashed_messages() %}
             {% if messages %}
@@ -48,8 +52,13 @@
                     <p>Content:</p>
                     <textarea name="post_content" rows="5" cols="51">
                     </textarea>
-                    <button>POST</button>
-            </form>            
+                    <button class = 'postbtn'>POST</button>
+            </form>                
+            </div>
+
+            <div>
+                <h2>Following: </h2>
+            </div>            
         </div>
 
     </div>
