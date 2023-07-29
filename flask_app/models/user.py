@@ -79,3 +79,13 @@ class User:
             flash("Passwords do not match!")
             is_valid = False
         return is_valid
+    
+    @classmethod
+    def get_by_id(cls, data):
+        query = '''
+        SELECT *
+        FROM users
+        WHERE id = %(id)s
+        '''
+        results = connectToMySQL(mydb).query_db(query,data)
+        return results[0]
