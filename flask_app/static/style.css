@@ -122,3 +122,12 @@ a{
     width: 549px;
 }
 
+.link{
+    text-decoration: none;
+}
+
+.followers, .following{
+    width: 500px;
+    height: 370px;
+    border-bottom: 2px solid #39444D;
+}

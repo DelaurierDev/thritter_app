@@ -27,7 +27,11 @@
             <div class ="post">
                 <div class = "posttop">
                 <h3>{{post.post_title}}</h3>
-                <h5>Posted by: {{post.username}}</h5>    
+                {% if post.user_id == session.user_id %}
+                <h5>Posted by: {{post.username}}</h5>
+                {%else%}
+                <h5>Posted by: <a href="/page/{{post.user_id}}" class="link">{{post.username}}</a></h5>
+                {%endif%}    
                 </div>
                 {{post.post_contents}}
 
@@ -50,8 +54,7 @@
                     <p>Title:</p>
                     <input type="text" name="post_title">
                     <p>Content:</p>
-                    <textarea name="post_content" rows="5" cols="51">
-                    </textarea>
+                    <textarea name="post_content" rows="5" cols="51"></textarea>
                     <button class = 'postbtn'>POST</button>
             </form>                
             </div>

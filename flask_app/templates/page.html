@@ -8,6 +8,46 @@
     <title>Thritter</title>
 </head>
 <body>
-    
+    <div class="nav">
+        <h1>{{user.username}}'s Page</h1>
+        <div class = 'navright'>
+            <form action="/dashboard">
+                <button>Home</button>
+            </form>
+            <form action="/logout">
+                <button>Logout</button>
+            </form>
+        </div>
+    </div>
+    <div class="posting">
+        <div>
+            <h2>{{user.username}}'s Posts</h2>
+            <div class="posts">
+            {%for post in posts%}
+            <div class ="post">
+                <div class = "posttop">
+                <h3>{{post.post_title}}</h3>
+
+                <h5>Posted by: {{user.username}}</h5> 
+                </div>
+                {{post.post_contents}}
+
+            </div>
+            {%endfor%}                
+            </div>
+
+        </div>
+        <div class="postright">
+            <div class="followers">
+                <h2>Followers: </h2>
+                <h4>Nothing to see here ...</h4>
+            </div>
+
+            <div class="following">
+                <h2>Following: </h2>
+                <h4>Nothing to see here ...</h4>
+            </div>            
+        </div>
+    </div>
 </body>
 </html>

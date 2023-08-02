@@ -52,4 +52,4 @@ def userPage(id):
     if 'user_id' not in session:
         flash('Must Login')
         return redirect('/')
-    return render_template("page.html", posts = Post.getpostsbyuserid({"id" : id}), user = User.get_by_username({"id" : id}))
+    return render_template("page.html", posts = Post.getpostsbyuserid({"id" : id}), user = User.get_by_id({"id" : id}))
