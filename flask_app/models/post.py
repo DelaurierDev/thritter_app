@@ -32,6 +32,7 @@ class Post:
             is_valid = False
         return is_valid
 
+#the method used to get all the posts in the database
     @staticmethod
     def getallposts():
         query = '''
@@ -42,6 +43,7 @@ class Post:
         results2 = results[::-1]
         return results2
     
+#the method used to get all of the posts made by a single user
     @classmethod
     def getpostsbyuserid(cls, id):
         posts = []
@@ -53,7 +55,8 @@ class Post:
             posts.append(row)
         posts2 = posts[::-1]
         return posts2
-    
+
+#the method used to get the posts by their post id
     @classmethod
     def getPostByPostID(cls, id):
         query= '''
@@ -65,6 +68,7 @@ class Post:
         results = connectToMySQL(mydb).query_db(query,id)
         return results[0]
     
+#the method used to edit the posts in the database
     @classmethod
     def edit(cls, id):
         query = '''
@@ -75,7 +79,8 @@ class Post:
         WHERE id = %(id)s;
         '''
         return connectToMySQL(mydb).query_db(query, id)
-    
+
+#the method used to delete a post from the database
     @classmethod
     def delete(cls, id):
         query = '''

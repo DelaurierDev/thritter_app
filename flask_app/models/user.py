@@ -4,7 +4,6 @@ import re
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$') 
 mydb = 'thritter'
 
-#creating user class object
 class User:
     def __init__(self,data):
         self.id = data['id']
@@ -80,6 +79,7 @@ class User:
             is_valid = False
         return is_valid
     
+    #A method used to get a user by user id
     @classmethod
     def get_by_id(cls, data):
         query = '''

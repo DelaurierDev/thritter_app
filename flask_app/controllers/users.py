@@ -92,3 +92,11 @@ def myaccount():
         return redirect('/')
     
     return render_template('myaccount.html', posts = Post.getpostsbyuserid({'id' :session['user_id']}))
+
+#a route used for rendering a users page
+@app.route("/page/<id>")
+def userPage(id):
+    if 'user_id' not in session:
+        flash('Must Login')
+        return redirect('/')
+    return render_template("page.html", posts = Post.getpostsbyuserid({"id" : id}), user = User.get_by_id({"id" : id}))
